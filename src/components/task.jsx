@@ -1,18 +1,28 @@
 import { useState } from "react";
 function ToDoList() {
-  const [tasks, setTasks] = useState([]);
+  const initialTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  const [tasks, setTasks] = useState(initialTasks);
   const [newTask, setNewTasks] = useState("");
 
+  function saveTasks(updatedTasks) {
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    setTasks(updatedTasks);
+  }
   function onChangeHandle(event) {
     setNewTasks(event.target.value);
   }
   function addTask() {
-    if (newTask.trim() !== "") setTasks((t) => [...t, newTask]);
-    setNewTasks("");
+    if (newTask.trim() !== "") {
+      const updatedTasks = [...tasks, newTask];
+      saveTasks(updatedTasks);
+      setNewTasks("");
+    }
+    // setNewTasks("");
   }
   function deleteTask(index) {
     const updatedTasks = tasks.filter((ele, i) => i !== index);
-    setTasks(updatedTasks);
+    // setTasks(updatedTasks);
+    saveTasks(updatedTasks);
   }
   function moveUp(index) {
     if (index > 0) {
@@ -21,7 +31,8 @@ function ToDoList() {
         updatedTasks[index - 1],
         updatedTasks[index],
       ];
-      setTasks(updatedTasks);
+      // setTasks(updatedTasks);
+      saveTasks(updatedTasks);
     }
   }
   function moveDown(index) {
@@ -31,7 +42,8 @@ function ToDoList() {
         updatedTasks[index + 1],
         updatedTasks[index],
       ];
-      setTasks(updatedTasks);
+      // setTasks(updatedTasks);
+      saveTasks(updatedTasks);
     }
   }
   return (
