@@ -37,7 +37,7 @@ function ToDoList() {
   return (
     <>
       <div className="grid place-items-center">
-        <h1 className="grid justify-center font-bold font-size text-2xl">
+        <h1 className="mt-2 font-pressStart grid justify-center font-bold text-4xl">
           To Do List
         </h1>
         <div>
@@ -46,34 +46,34 @@ function ToDoList() {
             type="text"
             placeholder="Enter Your Text..."
             value={newTask}
-            className="h-10 rounded mr-2 inline-block w-700px px-1 py-1 mt-2 border border-black"></input>
+            className="font-pressStart h-10 rounded mr-2 inline-block w-700px px-1 py-1 mt-2 border border-black"></input>
           <button
             onClick={addTask}
-            className="h-10 bg-green-800 w-[50px] rounded text-white hover:bg-green-500">
+            className="font-pressStart h-10 bg-green-500 w-[55px] rounded text-white hover:bg-green-800">
             Add
           </button>
         </div>
         <ol className="p-0">
           {tasks.map((task, index) => (
             <li
-              className="flex items-center justify-between bg-slate-200 w-[1000px] p-2 mb-2"
+              className="font-inter font-bold flex items-center justify-between w-[1000px] shadow hover:shadow-lg p-2 mt-2 mb-2 rounded"
               key={index}>
               <span className="text-xl">{task}</span>
               <div className="flex space-x-2">
                 <button
                   onClick={() => deleteTask(index)}
-                  className="h-10 bg-red-800 w-[60px] rounded text-white hover:bg-red-500">
-                  Delete
+                  className="font-pressStart text-2xl h-10 pb-2 bg-red-500 w-[40px] rounded text-white hover:bg-red-800">
+                  🗑
                 </button>
                 <button
                   onClick={() => moveUp(index)}
-                  className="h-10 bg-gray-800 w-[60px] rounded text-white hover:bg-gray-500">
-                  Up
+                  className="font-pressStart text-2xl h-10 pb-2 bg-blue-300 w-[40px] rounded text-white hover:bg-blue-500">
+                  ▲
                 </button>
                 <button
                   onClick={() => moveDown(index)}
-                  className="h-10 bg-gray-800 w-[60px] rounded text-white hover:bg-gray-500">
-                  Down
+                  className="font-pressStart text-2xl h-10 pb-2 bg-blue-300 w-[40px] rounded text-white hover:bg-blue-500">
+                  ▼
                 </button>
               </div>
             </li>
